@@ -4,7 +4,7 @@ pipeline {
         stage('Update Master Document') {
             steps {
                 script {
-                    def templatePath = 'templates/master_updates.tex'
+                    def templatePath = 'templates/master_update.tex'
                     def weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
 
                     // Read the template content
