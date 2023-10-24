@@ -33,7 +33,6 @@ pipeline {
 \\input{introduction}
 \\pagebreak
 """
-
                     // Create a variable to hold the final content
                     def finalContent = templateContent
 
@@ -61,7 +60,6 @@ pipeline {
                         finalContent += sectionContent
                     }
 
-                    // finalContent = finalContent.replaceAll("\\\\end\\{document\\}","")
                     finalContent += "\n\\end{document}"
 
                     // Write the final content back to the master document
