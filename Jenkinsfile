@@ -66,25 +66,16 @@ pipeline {
                         script {
                             def templatePath = 'templates/master_update.tex'
                             def weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
-
                             // Read the template content
                             // def templateContent = readFile(templatePath)
-                            def templateContent = masterHeading
-                            // Create a variable to hold the final content
-                            def finalContent = templateContent
-
+                            def finalContent = masterHeading
                             // Iterate through week directories and update the content
                             for (weekDir in weekDirs) {
                                 def weekName = weekDir.substring(0, 10) // Extract the date part from the directory name
-
-                                // Generate section content for the week
-                                def sectionContent = weekContent
                                 // Append section content to the final content
-                                finalContent += sectionContent
+                                finalContent += weekContent(weekName, weekDir)
                             }
-
                             finalContent += "\n\\end{document}"
-
                             // Write the final content back to the master document
                             writeFile(file: templatePath, text: finalContent)
                         }
@@ -97,7 +88,7 @@ pipeline {
                             for (weekDir in weekDirs) {
                                 def weekName = weekDir.substring(0, 10) // Extract the date part from the directory name
                                 def templatePath = "templates/${weekName}_update.tex"
-                                def finalContent = weekHeading + weekContent + "\n\\end{document}"
+                                def finalContent = weekHeading(weekName) + weekContent(weekName, weekDir) + "\n\\end{document}"
                                 writeFile(file: templatePath, text: finalContent)
                             }
                         }
