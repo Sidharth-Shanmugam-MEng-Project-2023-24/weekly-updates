@@ -104,9 +104,7 @@ pipeline {
                 script {
                     def latexFiles = findFiles(glob: 'templates/*.tex')
                     for (file in latexFiles) {
-                        def pdfFile = file.name.replaceAll(/\.tex$/, '.pdf')
-                        // sh "pdflatex -output-directory=artifacts $file" // Compile LaTeX to PDF
-                        sh(script: 'pdflatex -output-directory=artifacts $file',)
+                        sh "pdflatex -interaction=nonstopmode $file" // Compile LaTeX to PDF
                     }
                 }
             }
