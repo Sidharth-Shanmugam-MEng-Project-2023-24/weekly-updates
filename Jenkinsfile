@@ -59,7 +59,9 @@ pipeline {
             steps {
                 cleanWs()
                 checkout scm
-                weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
+                script {
+                    weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')   
+                }
             }
         }
         stage('Generate LaTeX') {
