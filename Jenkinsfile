@@ -104,6 +104,7 @@ pipeline {
                 script {
                     def latexFiles = findFiles(glob: 'templates/*.tex')
                     for (file in latexFiles) {
+                        sh "ls"
                         sh "/Library/TeX/texbin/pdflatex -interaction=nonstopmode $file" // Compile LaTeX to PDF
                     }
                 }
