@@ -97,5 +97,44 @@ pipeline {
                 }
             }
         }
+        stage('Compile LaTeX') {
+            steps {
+                script {
+                    def latexFiles = findFiles(glob: 'templates/*.tex')
+                    for (file in latexFiles) {
+                        def pdfFile = file.name.replaceAll(/\.tex$/, '.pdf')
+                        sh "pdflatex -output-directory=artifacts $file" // Compile LaTeX to PDF
+                    }
+                }
+            }
+        }
+        // stage('Create GitHub Release') {
+        //     steps {
+        //         script {
+        //             def githubRelease = githubRelease(
+        //                 apiUri: 'https://api.github.com', // GitHub API endpoint
+        //                 credentialsId: 'YOUR_GITHUB_CREDENTIALS_ID', // Use your GitHub credentials ID
+        //                 tag: 'v1.0', // Tag for the release
+        //                 releaseNotes: 'Release Notes',
+        //                 target: 'master',
+        //                 prerelease: false,
+        //                 title: 'Release Title',
+        //                 description: 'Release Description'
+        //             )
+
+        //             def pdfFiles = findFiles(glob: 'artifacts/*.pdf')
+
+        //             for (pdfFile in pdfFiles) {
+        //                 archiveArtifacts artifacts: pdfFile, allowEmptyArchive: true
+        //                 githubReleaseUpload(
+        //                     server: githubRelease.server,
+        //                     releaseId: githubRelease.releaseId,
+        //                     asset: pdfFile,
+        //                     assetFilename: pdfFile.name
+        //                 )
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
