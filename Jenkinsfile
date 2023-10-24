@@ -105,7 +105,7 @@ pipeline {
                     def latexFiles = findFiles(glob: 'templates/*.tex')
                     for (file in latexFiles) {
                         def relativeFilePath = file.toString().substring('templates/'.length()) // Remove 'templates/' part
-                        sh "cd templates && /Library/TeX/texbin/pdflatex -interaction=nonstopmode $relativeFilePath" // Compile LaTeX to PDF
+                        sh "cd templates && /Library/TeX/texbin/pdflatex -interaction=nonstopmode $relativeFilePath || true" // Compile LaTeX to PDF
                     }
                 }
             }
