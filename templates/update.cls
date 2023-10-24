@@ -41,4 +41,4 @@
   }{}
 
 
-  \titleformat{\section}{\normalfont\Large\bfseries}{Week \thesection}{1em}{}
+  % \titleformat{\section}{\normalfont\Large\bfseries}{Week \thesection}{1em}{}
