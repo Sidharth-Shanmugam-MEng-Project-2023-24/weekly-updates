@@ -14,7 +14,8 @@ def masterHeading = """
 \\pagebreak
 """
 
-def weekHeading = """
+def weekHeading(weekName) {
+    return """
 \\documentclass[11pt]{update}
 \\title{Project Updates: $weekName}
 \\author{Sidharth Shanmugam}
@@ -27,8 +28,10 @@ def weekHeading = """
 \\input{introduction}
 \\pagebreak
 """
+}
 
-def weekContent = """
+def weekContent(weekName, weekDir) {
+    return """
 \\section{$weekName}
 \\subsection{Supervision Meetings}
 \\input{../$weekDir/01_supervision_meetings}
@@ -42,6 +45,7 @@ def weekContent = """
 \\input{../$weekDir/05_comments_concerns}
 \\pagebreak
 """
+}
 
 pipeline {
     agent any
