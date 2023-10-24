@@ -60,7 +60,7 @@ pipeline {
                 cleanWs()
                 checkout scm
                 script {
-                    weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')   
+                    weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
                 }
             }
         }
@@ -105,7 +105,8 @@ pipeline {
                     def latexFiles = findFiles(glob: 'templates/*.tex')
                     for (file in latexFiles) {
                         def pdfFile = file.name.replaceAll(/\.tex$/, '.pdf')
-                        sh "pdflatex -output-directory=artifacts $file" // Compile LaTeX to PDF
+                        // sh "pdflatex -output-directory=artifacts $file" // Compile LaTeX to PDF
+                        sh(script: 'pdflatex -output-directory=artifacts $file',)
                     }
                 }
             }
