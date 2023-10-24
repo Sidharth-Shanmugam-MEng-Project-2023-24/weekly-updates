@@ -102,9 +102,9 @@ pipeline {
         stage('Compile LaTeX') {
             steps {
                 script {
-                    def latexFiles = findFiles(glob: 'templates/*.tex')
+                    sh "cd templates"
+                    def latexFiles = findFiles(glob: '*.tex')
                     for (file in latexFiles) {
-                        sh "cd templates"
                         sh "/Library/TeX/texbin/pdflatex -interaction=nonstopmode $file" // Compile LaTeX to PDF
                     }
                 }
