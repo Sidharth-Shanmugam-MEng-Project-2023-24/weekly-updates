@@ -47,6 +47,8 @@ def weekContent(weekName, weekDir) {
 """
 }
 
+def weekDirs
+
 pipeline {
     agent any
     options {
@@ -56,7 +58,8 @@ pipeline {
         stage('Clean & Checkout') {
             steps {
                 cleanWs()
-                checkout scm 
+                checkout scm
+                weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
             }
         }
         stage('Generate LaTeX') {
@@ -65,7 +68,6 @@ pipeline {
                     steps {
                         script {
                             def templatePath = 'templates/master_update.tex'
-                            def weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
                             // Read the template content
                             // def templateContent = readFile(templatePath)
                             def finalContent = masterHeading
@@ -84,7 +86,6 @@ pipeline {
                 stage('Weekly Documents') {
                     steps {
                         script {
-                            def weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
                             for (weekDir in weekDirs) {
                                 def weekName = weekDir.substring(0, 10) // Extract the date part from the directory name
                                 def templatePath = "templates/${weekName}_update.tex"
