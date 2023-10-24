@@ -38,7 +38,7 @@ pipeline {
                     }
 
                     finalContent = finalContent.replaceAll("\\\\end\\{document\\}","")
-                    finalContent += "\\\\end{document}"
+                    finalContent += "\n\\end{document}"
 
                     // Write the final content back to the master document
                     writeFile(file: templatePath, text: finalContent)
