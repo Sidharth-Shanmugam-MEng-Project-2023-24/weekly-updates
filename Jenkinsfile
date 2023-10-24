@@ -102,10 +102,10 @@ pipeline {
         stage('Compile LaTeX') {
             steps {
                 script {
-                    sh "cd templates"
-                    def latexFiles = findFiles(glob: '*.tex')
+                    def latexFiles = findFiles(glob: 'templates/*.tex')
                     for (file in latexFiles) {
-                        sh "/Library/TeX/texbin/pdflatex -interaction=nonstopmode $file" // Compile LaTeX to PDF
+                        def relativeFilePath = file.toString().substring('templates/'.length()) // Remove 'templates/' part
+                        sh "cd templates && /Library/TeX/texbin/pdflatex -interaction=nonstopmode $relativeFilePath" // Compile LaTeX to PDF
                     }
                 }
             }
