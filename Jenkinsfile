@@ -77,7 +77,7 @@ pipeline {
                             for (weekDir in weekDirs) {
                                 def weekName = weekDir.substring(0, 10) // Extract the date part from the directory name
                                 // Append section content to the final content
-                                finalContent += weekContent(weekName, weekDir)
+                                finalContent += "\\begin{leveldown}" + weekContent(weekName, weekDir) "\\end{leveldown}"
                             }
                             finalContent += "\n\\end{document}"
                             // Write the final content back to the master document
