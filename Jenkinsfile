@@ -123,7 +123,6 @@ pipeline {
         stage('Create GitHub Release') {
             steps {
                 script {
-                    def weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
                     def releaseName = new Date().format('dd-MM-yyyy') // Get the current date in DD-MM-YYYY format
 
                     // Check if a release with the same name exists and delete it
