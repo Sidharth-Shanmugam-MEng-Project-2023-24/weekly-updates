@@ -52,7 +52,7 @@ def weekDirs
 void setBuildStatus(String message, String state) {
   step([
       $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "$(scm.userRemoteConfigs[0].url)"],
+      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/Sidharth-Shanmugam-MEng-Project-2023-24/weekly-updates"],
       contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins/build-status"],
       errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
       statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
