@@ -40,5 +40,4 @@
    %\let\section\relax%
   }{}
 
-
   % \titleformat{\section}{\normalfont\Large\bfseries}{Week \thesection}{1em}{}
