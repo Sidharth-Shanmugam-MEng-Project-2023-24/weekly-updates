@@ -120,6 +120,44 @@ pipeline {
                 }
             }
         }
+        stage('Create GitHub Release') {
+            steps {
+                script {
+                    def weekDirs = sh(script: 'ls -d [0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]', returnStdout: true).trim().split('\n')
+                    def releaseName = new Date().format('dd-MM-yyyy') // Get the current date in DD-MM-YYYY format
+
+                    // Check if a release with the same name exists and delete it
+                    def existingRelease = githubApi.getReleaseByTag(
+                        owner: 'SidSidSid16',
+                        repo: 'weekly-updates',
+                        tag: releaseName
+                    )
+                    if (existingRelease) {
+                        githubApi.deleteRelease(owner: 'SidSidSid16', repo: 'weekly-updates', releaseId: existingRelease.id)
+                    }
+
+                    // Create a new release
+                    def createRelease = githubApi.createRelease(
+                        owner: 'SidSidSid16',
+                        repo: 'weekly-updates',
+                        tag_name: releaseName,
+                        name: releaseName,
+                        body: 'Release Notes'
+                    )
+
+                    // Upload PDF files to the release
+                    def pdfFiles = findFiles(glob: 'artifacts/*.pdf')
+                    for (pdfFile in pdfFiles) {
+                        githubReleaseUpload(
+                            server: createRelease.server,
+                            releaseId: createRelease.releaseId,
+                            asset: pdfFile,
+                            assetFilename: pdfFile.name
+                        )
+                    }
+                }
+            }
+        }
         // stage('Create GitHub Release') {
         //     steps {
         //         script {
