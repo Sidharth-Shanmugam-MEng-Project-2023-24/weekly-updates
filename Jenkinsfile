@@ -49,16 +49,6 @@ def weekContent(weekName, weekDir) {
 
 def weekDirs
 
-void setBuildStatus(String message, String state) {
-  step([
-      $class: "GitHubCommitStatusSetter",
-      reposSource: [$class: "ManuallyEnteredRepositorySource", url: "https://github.com/Sidharth-Shanmugam-MEng-Project-2023-24/weekly-updates"],
-      contextSource: [$class: "ManuallyEnteredCommitContextSource", context: "ci/jenkins/build-status"],
-      errorHandlers: [[$class: "ChangingBuildStatusErrorHandler", result: "UNSTABLE"]],
-      statusResultSource: [ $class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
-  ]);
-}
-
 pipeline {
     agent any
     options {
@@ -120,71 +110,19 @@ pipeline {
                 }
             }
         }
-        stage('Create GitHub Release') {
+        stage('Upload Files') {
             steps {
                 script {
-                    def releaseName = new Date().format('dd-MM-yyyy') // Get the current date in DD-MM-YYYY format
-
-                    // Check if a release with the same name exists and delete it
-                    def existingRelease = githubApi.getReleaseByTag(
-                        owner: 'SidSidSid16',
-                        repo: 'weekly-updates',
-                        tag: releaseName
-                    )
-                    if (existingRelease) {
-                        githubApi.deleteRelease(owner: 'SidSidSid16', repo: 'weekly-updates', releaseId: existingRelease.id)
-                    }
-
-                    // Create a new release
-                    def createRelease = githubApi.createRelease(
-                        owner: 'SidSidSid16',
-                        repo: 'weekly-updates',
-                        tag_name: releaseName,
-                        name: releaseName,
-                        body: 'Release Notes'
-                    )
-
-                    // Upload PDF files to the release
-                    def pdfFiles = findFiles(glob: 'artifacts/*.pdf')
-                    for (pdfFile in pdfFiles) {
-                        githubReleaseUpload(
-                            server: createRelease.server,
-                            releaseId: createRelease.releaseId,
-                            asset: pdfFile,
-                            assetFilename: pdfFile.name
-                        )
-                    }
+                    def commitName = new Date().format('dd-MM-yyyy') // Get the current date in DD-MM-YYYY format
+                    // Clone main branch
+                    sh "git clone https://github.com/Sidharth-Shanmugam-MEng-Project-2023-24/weekly-updates && cd weekly-updates && git checkout main"
+                    // Copy PDF files to the main branch
+                    sh 'find templates/ -name "*.pdf" -exec cp {} weekly-updates/ \\;'
+                    // Commit and push new files
+                    sh 'cd weekly-updates && git add -A && git commit -m "${commitName}" && git push'
                 }
             }
         }
-        // stage('Create GitHub Release') {
-        //     steps {
-        //         script {
-        //             def githubRelease = githubRelease(
-        //                 apiUri: 'https://api.github.com', // GitHub API endpoint
-        //                 credentialsId: 'YOUR_GITHUB_CREDENTIALS_ID', // Use your GitHub credentials ID
-        //                 tag: 'v1.0', // Tag for the release
-        //                 releaseNotes: 'Release Notes',
-        //                 target: 'master',
-        //                 prerelease: false,
-        //                 title: 'Release Title',
-        //                 description: 'Release Description'
-        //             )
-
-        //             def pdfFiles = findFiles(glob: 'artifacts/*.pdf')
-
-        //             for (pdfFile in pdfFiles) {
-        //                 archiveArtifacts artifacts: pdfFile, allowEmptyArchive: true
-        //                 githubReleaseUpload(
-        //                     server: githubRelease.server,
-        //                     releaseId: githubRelease.releaseId,
-        //                     asset: pdfFile,
-        //                     assetFilename: pdfFile.name
-        //                 )
-        //             }
-        //         }
-        //     }
-        // }
     }
     post {
         success {
