@@ -119,7 +119,7 @@ pipeline {
                     // Copy PDF files to the main branch
                     sh 'find templates/ -name "*.pdf" -exec cp {} weekly-updates/ \\;'
                     // Commit and push new files
-                    sh 'cd weekly-updates && git add -A && git commit -m "${commitName}" && git push'
+                    sh "cd weekly-updates && git add -A && git commit -m '${commitName}' && git push"
                 }
             }
         }
