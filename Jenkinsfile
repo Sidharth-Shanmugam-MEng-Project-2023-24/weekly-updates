@@ -110,6 +110,11 @@ pipeline {
                 }
             }
         }
+        post {
+            success {
+                archiveArtifacts artifacts: 'templates/*.pdf', fingerprint: true
+            }
+        }
         // stage('Create GitHub Release') {
         //     steps {
         //         script {
