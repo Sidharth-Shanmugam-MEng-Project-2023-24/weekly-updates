@@ -41,7 +41,7 @@ def weekContent(weekName, weekDir) {
 \\input{../$weekDir/03_additional_updates}
 \\subsection{Next Week's Agenda}
 \\input{../$weekDir/04_nextweek_agenda}
-\\subsection{Comments & Concerns}
+\\subsection{Comments \\& Concerns}
 \\input{../$weekDir/05_comments_concerns}
 \\pagebreak
 """
