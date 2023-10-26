@@ -10,6 +10,7 @@ def masterHeading = """
 \\pagebreak
 \\section*{Introduction}
 \\addcontentsline{toc}{section}{Introduction}
+This master record collates weekly project updates to produce a thorough insight into progress within a single document. Each section consists of a week's update. Within each section are the following subsections and descriptions:
 \\input{introduction}
 \\pagebreak
 """
