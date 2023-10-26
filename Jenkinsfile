@@ -115,7 +115,8 @@ pipeline {
                     def latexFiles = findFiles(glob: 'templates/*.tex')
                     for (file in latexFiles) {
                         def relativeFilePath = file.toString().substring('templates/'.length()) // Remove 'templates/' part
-                        sh "cd templates && /Library/TeX/texbin/pdflatex -interaction=nonstopmode $relativeFilePath || true" // Compile LaTeX to PDF
+                        // compile latex twice since the toc file generates in the first run, and then used in the second to render the table of contents.
+                        sh "cd templates && /Library/TeX/texbin/pdflatex -interaction=nonstopmode $relativeFilePath && /Library/TeX/texbin/pdflatex -interaction=nonstopmode $relativeFilePath || true" // Compile LaTeX to PDF
                     }
                 }
             }
