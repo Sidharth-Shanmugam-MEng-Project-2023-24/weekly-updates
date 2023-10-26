@@ -25,19 +25,4 @@
 \newlist{myitemize}{itemize}{1}
 \setlist[myitemize]{label=$\bullet$, nosep, wide=0pt, leftmargin=*, before=\vspace{-0.5\baselineskip}}
 
-\newenvironment{leveldown}% Demote sectional commands
-  {\let\section\subsection%
-   \let\subsection\subsubsection%
-   \let\subsubsection\paragraph%
-   \let\paragraph\subparagraph%
-   %\let\subparagraph\relax%
-  }{}
-\newenvironment{levelup}% Promote sectional commands
-  {\let\subparagraph\paragraph%
-   \let\paragraph\subsubsection%
-   \let\subsubsection\subsection%
-   \let\subsection\section%
-   %\let\section\relax%
-  }{}
-
   % \titleformat{\section}{\normalfont\Large\bfseries}{Week \thesection}{1em}{}
