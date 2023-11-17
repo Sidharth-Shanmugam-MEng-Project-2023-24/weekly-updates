@@ -34,15 +34,15 @@ def weekHeading(weekName) {
 def weekContent(weekName, weekDir) {
     return """
 \\section{$weekName}
-\\subsection{Supervision Meetings}
+
 \\input{../$weekDir/01_supervision_meetings}
-\\subsection{Actionable Items Recap}
+
 \\input{../$weekDir/02_actionables_recap}
-\\subsection{Additional Project Updates}
+
 \\input{../$weekDir/03_additional_updates}
-\\subsection{Next Week's Agenda}
+
 \\input{../$weekDir/04_nextweek_agenda}
-\\subsection{Comments \\& Concerns}
+
 \\input{../$weekDir/05_comments_concerns}
 \\pagebreak
 """
