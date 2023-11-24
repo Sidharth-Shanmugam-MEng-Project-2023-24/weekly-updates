@@ -36,12 +36,16 @@ def weekContent(weekName, weekDir) {
 \\section{$weekName}
 \\subsection{Supervision Meetings}
 \\input{../$weekDir/01_supervision_meetings}
+\\pagebreak
 \\subsection{Actionable Items Recap}
 \\input{../$weekDir/02_actionables_recap}
+\\pagebreak
 \\subsection{Additional Project Updates}
 \\input{../$weekDir/03_additional_updates}
+\\pagebreak
 \\subsection{Next Week's Agenda}
 \\input{../$weekDir/04_nextweek_agenda}
+\\pagebreak
 \\subsection{Comments \\& Concerns}
 \\input{../$weekDir/05_comments_concerns}
 \\pagebreak
