@@ -1,0 +1,36 @@
+\begin{table}[!h]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+        \hline
+        Actionable Item & Progress Report & Pending Tasks \\
+        \hline
+        \hline
+        \begin{myitemize}
+            \item Exand research and make notes.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item From the few gathered papers, I have read two and have made very in-depth notes/literature reviews in my project journal.
+            \item They were bubble detection papers for extracting bubble characteristics to monitor gas seepage from the ocean floor.
+            \item The papers used Canny edge detection, which is different to my starting point with Simple Blob Detection.
+            \item Using Canny as a starting point, one of the papers described using the Snake-method to extract the exact outlines of the bubbles.
+            \item Bubble tracking was outlined in the papers: by using a Kalman filter with the previous two captured frames, then by applying the new detection of bubbles, weighted matchings can take place using the Hungarian algorithm.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item From these papers, it is clear that there is a basic/overall standardised method for detecting bubbles (using Canny). This is a different path compared to what I was originally pursuing with image thresholding and blob detection.
+            \item I will try to experiment with the edge detection methodologies that were oulined in the reports I read - this should help me gauge the complexities involved and see the performance physically.
+            \item I need to read more literature - there was one that was cited by both the papers I read, and it should go into greater depth of how Canny was employed to detect bubbles. I will be reading this next.
+        \end{myitemize} \\
+        \hline
+        \begin{myitemize}
+            \item Research histograms
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item No progress on this.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item Since the literature I'm reading focusses on Canny edge detection, there isn't any need for thresholding and blob detection, therefore I can temporarily pause the research on histograms.
+            \item Once I get a clear view on how the \textit{standardised} method of bubble detection works, I can then compare it with blob detection, and when I get on to that I will resume the research on an automated thresholding method with histograms.
+        \end{myitemize} \\
+        \hline
+    \end{tabularx}
+\end{table}
