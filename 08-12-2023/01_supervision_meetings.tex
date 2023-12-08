@@ -1,0 +1,24 @@
+\begin{table}[!h]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|X|X|}
+        \hline
+        Date & Agenda & Actionable Items & Attendees \\
+        \hline
+        \hline
+        07-12-2023 & 
+        \begin{myitemize}
+            \item Discussed research finding - It's good to start with fundamental practices such as simple blob detection, Canny, etc. With a solid fundamental understanding, I can explore AI/ML avenues to employ a neural network to improve the parameters to detect bubbles and predict movement.
+            \item Discussed hypervisor aspects - Hypervisor is a solution to run programs at the lowest-level closest to system functions (must have high priority level to reduce task switching that causes jitter).
+            \item Discussed real-time aspects - Starting in Python, I could use implement various tasks in the form of functions, one for capturing a frame, one for processing the frame, one for Canny, one for tracking prediction, etc, for example. With these tasks in functions, I can use the thread package (maybe) to implement a simple round-robin task scheduler. I can log the entry and exit times for each task to measure how long it takes to parameterise real-time. Based on these parameters I can fine-tune the algorithm parameters to make it conform to real-time requirements.
+            \item Ordering components - The list of components I proposed was good, we should add the global shutter camera to the list.
+        \end{myitemize} &
+        \begin{myitemize}
+            \item Compare differences between hypervisors: Jailhouse and Docker.
+            \item Finish off reading literature on the technicalities of Canny for bubble detection.
+        \end{myitemize} &
+        Sidharth Shanmugam \\
+        Paul Mitchell \\
+        Benjamin Henson
+        \hline
+    \end{tabularx}
+\end{table}
