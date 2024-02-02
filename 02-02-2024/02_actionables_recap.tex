@@ -1,0 +1,36 @@
+\begin{table}[!h]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+        \hline
+        Actionable Item & Progress Report & Pending Tasks \\
+        \hline
+        \hline
+        Expand research and make notes. & 
+        \begin{myitemize}
+            \item My plan to read the paper that discusses the technical aspects of using Canny to detect bubbles has been read and reviewed.
+            \item I think I've collated enough information on bubble detection, however, all the paper's I have read on this are related to the environmental analysis of quantifying bubbles released from sea-floor gas seepages. Gas escaping and rising to the surface of the ocean is very different to the backscatter experienced when recording video from a constantly moving UUV, where debris also forms backscatter alongside bubbles.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item Since I struggled to find papers on detecting and eliminating underwater backscatter, I had to assume that bubbles form most of the backscatter, and if I can build a system that effectively detects bubbles, then I can easily expand it to detect other forms of backscatter. I should develop a benchmarks script that uses the fundamental and basic technologies such as Canny to detect bubbles and the least distance method to track bubbles. This benchmark can help test how effective the bubble detection idea works with detecting other forms of backscatter such as debris.
+        \end{myitemize} \\
+        \hline
+        Compare differences between hypervisors: Jailhouse and Docker. & 
+        \begin{myitemize}
+            \item I have outlined the differences between the two, use-cases of the two, and their effectiveness in reducing jitter to ensure better real-time complicance in the journal. The main idea was to use one of these tools to reserve hard resources in order to ensure that task latency is as little as possible.
+            \item Unfortunately, my research showed that these tools only reserve hardware on a time-basis and cannot isolate hardware completely, furthermore, it cannot manage the scheduling or priority of the tasks, so jitter will be unchanged.
+            \item Best option is to implement an RTOS, however, there aren't many that are well documented and support the family of Raspberry Pi boards that I am using for this project, so the next best thing is to apply a real-time patch to the Linux kernel (PREEMPT-RT).
+        \end{myitemize} &
+        \begin{myitemize}
+            \item I need to research more into the PREEMPT-RT patch to understand how it works, its benefits, drawbacks, etc.
+            \item I can use the benchmark script (that I need to write) to compare performance differences between the real-time patched kernel and the normal kernel.
+        \end{myitemize} \\
+        \hline
+        Experiment with Canny edge detection for bubble detection & 
+        \begin{myitemize}
+            \item I have started writing the Python script, taking extra care into the consideration of implementing logic to calculate real-time metrics of the script.
+        \end{myitemize} &
+        \begin{myitemize}
+            \item I need to finish this off.
+        \end{myitemize} \\
+    \end{tabularx}
+\end{table}

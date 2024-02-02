@@ -1,0 +1,32 @@
+\begin{table}[!h]
+    \centering
+    \begin{tabularx}{\textwidth}{|l|X|X|X|}
+        \hline
+        Date & Agenda & Actionable Items & Attendees \\
+        \hline
+        \hline
+        30-01-2024 & 
+        \begin{myitemize}
+            \item Discussed real-time aspects, Docker/Jailhouse reserves hardware on time-basis and does not manage the scheduling and priority of tasks so jitter will still be a problem. To reduce jitter, a real-time OS needs to be looked into, however, there aren't many RTOSes with Raspberry Pi support, so a real-time kernel can be explored.
+            \item Discussed literature on using basic algorithms such as Canny and the least distance rule to detect and track underwater rising bubbles for environmental analysis. Using basic algorithms and rules such as these will form the best foundation which can act as a benchmark when comparing real-time and hardwre aspects.
+            \item Discussed the steps I took to get the development Raspberry Pi connected to the internet and accessible via SSH from my laptop. The uni network prevents cross-device communication, so I set up W-Fi for internet, and ethernet for SSH comms with my laptop. Easier said than done - this system took an entire evening to get working.
+            \item Ordered components on the day of the supervision meeting (new gen Pi, case and PSU for Pi, global shutter camera, HDMI cable, and USB drive to boot OS from). Components arrived on 01-02-2024.
+            \item Discussed information on the intial report - two main/overall aims have been identified: (a) a reliable backscatter detection program, and (b) real-time compliancy ensuring efficient and reliable processing and operation.
+            \item I will be visiting India from the 18th of March to the 5th of April and will return once Easter finishes. This means I will be working remotely from India during term time between the 18th to the 22nd of March.
+        \end{myitemize} &
+        \begin{myitemize}
+            \item I need to research on exactly how the PREEMPT-RT Linux kernel patch works to implement real-time functionality. Especially with what pre-emption means in this context, and whether interpreted programs, such as Python scripts will continue to function, since programs may have to be compiled for real-time compliancy depending on the context of pre-emption.
+            \item There is a figure in this paper which shows the Canny edge detection detecting a bubble, the bubble is filled with white on a black background. How was the bubble region calculated and filled with white? A Python script can be written as a benchmark employing the basic methodologies explored in this paper. Try to retrieve some more of the metrics and statistics outlines in the paper to achieve a better understanding.
+            \item -
+            \item I was planning to reach out to the electronics store to enquire about the ordered components after allowing a week's time if I didn't hear anything from them, however, the components arrived surprisingly fast and I've collected them.
+            \item I need to start laying out an overall plan to how the initial report needs to be structured, I also need to plan out a schedule (with a Gantt chart for example) to create an outline of what needs to be completed and the timeframes.
+            \item Paul and Ben are happy with me working remotely, as long as my work output is the same quality as me working on-site, however, I do need to let the department know by emailing the Chair of the Board of Studies and my academic supervisor.
+        \end{myitemize} &
+        \begin{myitemize}
+            \item Sidharth Shanmugam
+            \item Paul Mitchell
+            \item Benjamin Henson
+        \end{myitemize} \\
+        \hline
+    \end{tabularx}
+\end{table}
