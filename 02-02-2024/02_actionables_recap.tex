@@ -18,7 +18,6 @@
         \begin{myitemize}
             \item I have outlined the differences between the two, use-cases of the two, and their effectiveness in reducing jitter to ensure better real-time complicance in the journal. The main idea was to use one of these tools to reserve hard resources in order to ensure that task latency is as little as possible.
             \item Unfortunately, my research showed that these tools only reserve hardware on a time-basis and cannot isolate hardware completely, furthermore, it cannot manage the scheduling or priority of the tasks, so jitter will be unchanged.
-            \item Best option is to implement an RTOS, however, there aren't many that are well documented and support the family of Raspberry Pi boards that I am using for this project, so the next best thing is to apply a real-time patch to the Linux kernel (PREEMPT-RT).
         \end{myitemize} &
         \begin{myitemize}
             \item I need to research more into the PREEMPT-RT patch to understand how it works, its benefits, drawbacks, etc.
