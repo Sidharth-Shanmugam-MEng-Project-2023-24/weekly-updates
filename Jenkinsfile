@@ -1,6 +1,6 @@
 def masterHeading = """
 \\documentclass[11pt]{update}
-\usepackage{hyperref}
+\\usepackage{hyperref}
 \\title{Project Updates: Master Record}
 \\author{Sidharth Shanmugam}
 \\date{\\today}
@@ -19,7 +19,7 @@ This master record collates weekly project updates to produce a thorough insight
 def weekHeading(weekName) {
     return """
 \\documentclass[11pt]{update}
-\usepackage{hyperref}
+\\usepackage{hyperref}
 \\title{Project Updates: $weekName}
 \\author{Sidharth Shanmugam}
 \\date{\\today}
