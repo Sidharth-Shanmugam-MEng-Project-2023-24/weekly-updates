@@ -1,0 +1,37 @@
+\begin{table}[!h]
+    \centering
+    \begin{tabularx}{\textwidth}{|X|X|X|}
+        \hline
+        Actionable Item & Progress Report & Pending Tasks \\
+        \hline
+        \hline
+        Script to record footage from RPi and Pi GS camera. & 
+        \begin{myitemize}
+            \item The RPi implementation of MJPEG isn't zero lossy.
+            \item I have a better understanding of how the raw data is captured, this should help with parsing and playback.
+            \item Recording in raw format will be challenging due to insufficient boot drive write speeds.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item I need to fine-tune the recording logic to use RAM for buffering instead of writing directly to the boot drive.
+            \item I need to write a view script that parses the raw data to play back the video recording.
+        \end{myitemize} \\
+        \hline
+        Record test footage. & 
+        \begin{myitemize}
+            \item Unfortunately, the seal for making the housing water-tight didn't set in time, so recording has been postponed.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item Once the seal has cured, Ben will record the footage for me using the script.
+            \item I need to send him instructions on how to use the program.
+        \end{myitemize} \\
+        \hline
+        Research real-time metrics and implement in backscatter cancellation software. &
+        \begin{myitemize}
+            \item No progress on this due to the backlog of other tasks.
+        \end{myitemize} & 
+        \begin{myitemize}
+            \item I will shift this for next week.
+        \end{myitemize} \\
+        \hline
+    \end{tabularx}
+\end{table}
