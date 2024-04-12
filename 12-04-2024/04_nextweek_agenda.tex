@@ -15,17 +15,34 @@ Success Metrics:
 
 
 
+\subsubsection{Wednesday - Implement PREEMPT-RT kernel and quantify (Milestone V2)}
+
+Actionable Items:
+
+\begin{itemize}
+    \item Implement the PREEMPT-RT kernel along-side the standard kernel.
+    \item Quantify the performance differences with the V1 software.
+\end{itemize}
+
+Success Metrics:
+
+\begin{itemize}
+    \item Analysis logged in the project journal
+\end{itemize}
 
 
 
 
-\subsubsection{Friday - Reach milestone V2}
+
+
+\subsubsection{Friday - Snake-based segmentation \& tracking}
 
 Actionable Items:
 
 \begin{itemize}
     \item The V1 system uses Canny to detect edges, with the detected edges passed to OpenCV's findContours() method to extract closed loop edges. The cancellation logic then uses a minimum enclosing circle (MEC) implementation which calculates a circumcircle which completely covers the minimum area of the detected contour. The MEC implementation must be replaced with the snake method.
     \item The `least distance rule' and Kalman filter approach must be researched for the backscatter tracking implementation in the system.
+    \item I will be putting the parallax part of `Project holes and mitigate parallax' task on pause until the final housing is completed and the ISA tank is functional.
 \end{itemize}
 
 Success Metrics:
