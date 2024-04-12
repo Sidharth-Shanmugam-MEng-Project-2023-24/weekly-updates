@@ -1,0 +1,35 @@
+\subsubsection{09-04-2024}
+Attendees: Sidharth Shanmugam, Paul Mitchell
+
+Agenda:
+
+\begin{itemize}
+    \item Pi Camera recording script has now been completed:
+    \begin{itemize}
+        \item Instead of recording the direct output from the sensor, I am recording from the Pi's Image Signal Processor (ISP) hardware module that converts the `Bayer' data into a human-readable format such as BGR888 (which also is natively supported by the OpenCV library) without any noticeable performance sacrifices.
+        \item By using the ISP module, the output resolution can be scaled to minimise disk write speed bottlenecks. As an extra precaution, I have written logic to record directly to a RAM buffer, which is then offloaded for format conversion when recording has stopped. I have also implemented logic to fix the recording framerates and have set it to default at 30 FPS, the sensor supports up to 60 FPS.
+        \item The output recorded file is a stream of binary data in BGR888 format, for easy playback such as on VLC, I have written logic to convert this file into an .MKV using a lossless encoder (FFV1).
+        \item Although not mentioned to Paul yet (sorry, forgot to mention this during the supervision meeting), I have been having trouble trying to focus the Pi Camera lens, it's almost like the lens is not compatible with the Global Shutter camera, perhaps the camera has a slightly different construction compared to the Raspberry Pi High Quality Camera. Ben is aware and has experienced the same issue, he has ordered a new lens.
+    \end{itemize}
+
+    \item Backscatter simulation software:
+    \begin{itemize}
+        \item Following our last meeting where the delays in underwater testing were discussed, Ben suggested I write a program that simulates the movement of bubbles to test my system. I have now completed writing this software - the program simulates bubbles rising from the bottom to the top of the screen.
+        \item I have added randomised axis velocities (horizontal and vertical axes) to ensure the bubbles don't follow a linear path as this will help verify the performance and accuracy of my backscatter tracking implementation (which will be developed in the near future). As bubbles rise underwater, they get bigger due to the pressure difference, I have added logic to grow the bubbles as they rise - this will be useful to track performance and accuracy of the system as bubbles change appearances.
+        \item Instead of exporting the simulation as a video, I have decided to export images of each frame. This behaviour matches how the Pi Camera will be interfaced with in the system - inside of a `while'-loop, each iteration denotes a frame, the software will retrieve the Pi Camera's frame output array, essentially allowing for direct control of the system's recording frame rate.
+        \item I have also added logic to export a CSV dataset of every bubble's centre coordinates and radius in every single frame of the simulation. This will provide a synthetic ground truth which I can directly use to quantify my system.
+    \end{itemize}
+
+    \item Initial report feedback:
+    \begin{itemize}
+        \item I really appreciated the feedback, there was a lot of important suggestions that I can use for my fimal report to enhance my grade (I'm really hoping to achieve an overall grade of 80\%+ :-)).
+        \item I will need to re-evaluate my objectives for the project as I won't have enough time to achieve all of them - I'm making great progress with the first objective of reliable backscatter cancellation system, with that done, I can start to make progress with the real-time research objective. The final objective regarding tracking and pre-emptive cancellation may need to be scrapped.
+    \end{itemize}
+\end{itemize}
+
+Actionable Items:
+
+\item Milestone V1:
+\begin{itemize}
+    \item I already have a system that implements the features for V1: (a) simple Canny-based segmentation, (b) real-time metric tracking, I just need to update this to complete the third objective to optimise for test footage of bubbles recorded from testing tank. Since we don't have the tank ready yet, I will optimise this for my bubble backscatter simulation output instead.
+\end{itemize}
