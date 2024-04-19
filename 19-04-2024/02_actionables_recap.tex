@@ -1,0 +1,54 @@
+\subsubsection{Reach milestone V1}
+
+Progress Report:
+
+\begin{itemize}
+    \item \textit{Done!}
+\end{itemize}
+
+Pending Tasks:
+
+\begin{itemize}
+    \item \textit{None.}
+\end{itemize}
+
+
+
+
+\subsubsection{Implement PREEMPT-RT kernel and quantify}
+
+Progress Report:
+
+\begin{itemize}
+    \item Since I got very much side-tracked with the multiprocessing research, I couldn't spend much time on this.
+    \item However, I have managed to figure out how to do it - I'll need a Linux host system to build the kernel, I can do this on the Pi itself without a host system, however, it'll take forever to compile.
+    \item I have installed and set up a Ubuntu OS VM again, I had to uninstall the VM from earlier in the project due to internal drive space constraints, however, that shouldn't be an issue anymore.
+\end{itemize}
+
+Pending Tasks:
+
+\begin{itemize}
+    \item Build and compile the kernel.
+    \item Copy in new kernel and quantify.
+\end{itemize}
+
+
+
+
+
+
+\subsubsection{Snake-based segmentation \& tracking}
+
+Progress Report:
+
+\begin{itemize}
+    \item \textit{No progress due to mulitprocessing side-tracking.}
+\end{itemize}
+
+Pending Tasks:
+
+\begin{itemize}
+    \item The V1 system uses Canny to detect edges, with the detected edges passed to OpenCV's findContours() method to extract closed loop edges. The cancellation logic then uses a minimum enclosing circle (MEC) implementation which calculates a circumcircle which completely covers the minimum area of the detected contour. The MEC implementation must be replaced with the snake method.
+    \item The `least distance rule' and Kalman filter approach must be researched for the backscatter tracking implementation in the system.
+    \item I will be putting the parallax part of `Project holes and mitigate parallax' task on pause until the final housing is completed and the ISA tank is functional.
+\end{itemize}

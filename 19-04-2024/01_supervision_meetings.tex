@@ -1,0 +1,37 @@
+\subsubsection{09-04-2024}
+We didn't have a specific meeting on Tuesday's as we usually do this week due to the ISA's morning closure. However, since I work from the ISA daily, we were able to meet up informally at multiple points throughout the week to discuss progress.
+
+Agenda:
+
+\begin{itemize}
+    \item Multiprocessing was a massive failure!
+    \begin{itemize}
+        \item V1 software is complete!
+        \item I realised that the current version is completely sequential, which is very inefficient since on a multicore system, such as the 4-core Raspberry Pi 4 and 5, only one core will be utilised. Python is not multithread compatible out of the box due to the Global Interpreter Lock (GIL), which is a mechanism to synchronise threads. However, the `multiprocessing' package allows for the creation of processes which are functions that is run bypassing the GIL.
+        \item I have re-written the software to implement each stage (i.e., greyscale conversion, histogram equalisation, etc) of the image processing pipeline as a process which runs on different cores. Since thread safety is crucial when moving data between different threads, queues must be utilised when sending data.
+        \item The performance data that I measured with the multiprocessing version was very surprising when compared to the single-core version: processing each frame took an average of 2x longer with multiprocessing, I went from an average frame processing time of 17ms to 33ms!
+        \item I think the biggest reason for this slow-down is due to the queues being an inter-process communication (IPC) service, there is a lot of overhead involved with IPCs, including serialisation, deserialisation and context switching between threads.
+        \item Another crucial problem with multiprocessing is the induced frame delay: capturing is a fast process that feeds into the much slower processing stage - so for example, when the 25th frame is being processed, the 100th frame is being captured, resulting in a 75-frame delay.
+        \item Unfortunately, due to the much reduced performance I will not be researching multiprocessing any further. Although a lot of time had been spent on this (~3.5 days) without any meaningful performance benefit when compared to the single core program, I have learnt a lot:
+        \begin{itemize}
+            \item Multiprocessing processes have much more overhead to startup as an entirely new OS process is being created as each one is run.
+            \item IPC services have a lot of overhead, as I mentioned before. Also, there is a lot of I/O bound tasks which can severely bottleneck multiprocessing.
+            \item Pipelining and multiprocessing only works for an FPGA, where each pipeline stage is hardcoded in fabric and isn't software threads that is being scheduled to each CPU-core by an OS.
+            \item (Ben mentioned this:) Never second-guess the compiler/OS when it comes to optimisations as it can optimise the code much better for runtime.
+        \end{itemize}
+        \item Although this was a failure, I can still write about it in my final report as I have a set of meaningful data and graphs.
+    \end{itemize}
+
+    \item ISA tank is ready for use.
+    \begin{itemize}
+        \item The tank is ready for use, I will be using it on Monday.
+        \item While we were discussing this, Ben and I tested the prototype setup to ensure the projector and camera are both properly focused and whether the script/software all works.
+    \end{itemize}
+\end{itemize}
+
+Actionable Items:
+
+\item Install PREEMPT-RT kernel and quantify:
+\begin{itemize}
+    \item Since I now have the V1 software in place, I can build the real-time kernel and test with it.
+\end{itemize}
