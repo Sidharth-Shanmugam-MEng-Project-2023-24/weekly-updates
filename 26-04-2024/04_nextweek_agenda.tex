@@ -25,6 +25,7 @@ Actionable Items:
 \begin{itemize}
     \item The V1 system uses Canny to detect edges, with the detected edges passed to OpenCV's findContours() method to extract closed-loop edges. The cancellation logic then uses a minimum enclosing circle (MEC) implementation which calculates a circumcircle that completely covers the minimum area of the detected contour. The MEC implementation must be replaced with the snake method.
     \item The `least distance rule' and Kalman filter approach must be researched for the backscatter tracking implementation in the system.
+    \item I will likely need to implement and test the tracking implementation using my synthetic bubble simulation as the tank footage of bubbles isn't very trackable.
 \end{itemize}
 
 Success Metrics:
