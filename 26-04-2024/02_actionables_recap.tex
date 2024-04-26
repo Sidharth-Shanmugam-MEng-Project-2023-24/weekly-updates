@@ -1,0 +1,50 @@
+\subsubsection{Recording underwater footage}
+
+Progress Report:
+
+\begin{itemize}
+    \item \textit{Done!}
+\end{itemize}
+
+Pending Tasks:
+
+\begin{itemize}
+    \item \textit{None.}
+\end{itemize}
+
+
+
+
+\subsubsection{Implement PREEMPT-RT kernel and quantify}
+
+Progress Report:
+
+\begin{itemize}
+    \item \textit{Done!}
+\end{itemize}
+
+Pending Tasks:
+
+\begin{itemize}
+    \item \textit{None.}
+\end{itemize}
+
+
+
+
+
+
+\subsubsection{Snake-based segmentation \& tracking}
+
+Progress Report:
+
+\begin{itemize}
+    \item \textit{No progress due to PREEMPT-RT side-tracking.}
+\end{itemize}
+
+Pending Tasks:
+
+\begin{itemize}
+    \item The V1 system uses Canny to detect edges, with the detected edges passed to OpenCV's findContours() method to extract closed-loop edges. The cancellation logic then uses a minimum enclosing circle (MEC) implementation which calculates a circumcircle that completely covers the minimum area of the detected contour. The MEC implementation must be replaced with the snake method.
+    \item The `least distance rule' and Kalman filter approach must be researched for the backscatter tracking implementation in the system.
+\end{itemize}

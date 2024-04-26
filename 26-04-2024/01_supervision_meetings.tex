@@ -1,0 +1,30 @@
+Like last week, we didn't have any normally scheduled supervisions this week as Paul was out of the office. However, I did meet with Ben to talk on many occasions across the week.
+Agenda:
+
+\begin{itemize}
+    \item PREEMPT-RT kernel worsens system performance.
+    \begin{itemize}
+        \item Just like the research and experimentation with multiprocessing, implementing a real-time kernel with PREEMPT-RT proved a failure, even though, in theory, it should've improved at least the system stability by maintaining a constant frame processing time.
+        \item The results showed a 1ms rise in the average frame processing time, which is roughly a 16\% increase. Not only this, but the stability is also worse, as the standard deviation in processing time for each frame increased by almost 60\%.
+    \end{itemize}
+
+    \item Tank recording.
+    \begin{itemize}
+        \item Recording was successful and the results were also great as the system worked quite well to detect just the backscatter in the foreground without any confusion about the background texturing - this is quite important as the system must work only for backscatter and not any region of interest that needs recording.
+    \end{itemize}
+
+    \item Final report.
+    \begin{itemize}
+        \item I have started planning this report, I wanted to give Paul a quick overview of how I have planned to structure this report, however, he was quite busy so this conversation did not proceed.
+        \item I have reached out to Simon Bale to clarify if we can reuse parts of the initial report in the final report - since, in my opinion, it makes more sense to use the initial report as a foundation, which the final report builds on. I am awaiting Simon's final response on this matter before I start writing content.
+    \end{itemize}
+\end{itemize}
+
+Actionable Items:
+
+\begin{itemize}
+    \item Quantify real-time performance of the system with underwater recording.
+    \begin{itemize}
+        \item At the moment, I've only quantified the real-time performances using my synthetic bubble simulation, however, with the underwater footage now recorded, it would make sense to quantify that to gauge the true system performance.
+    \end{itemize}
+\end{itemize}

@@ -1,0 +1,49 @@
+\subsubsection{Wednesday - Parallax and offset calibration.}
+
+Actionable Items:
+
+\begin{itemize}
+    \item While recording the test footage in the ISA tank, I noticed a large offset between where the camera was recording and where the projector was projecting. There is some overlap between the two, where the system can effectively work, so I will need to plan and implement some logic in code that can automatically find the overlap region and crop the feed/projection.
+    \item I also noticed some image distortion which also needs resolving. This can be done quite simply by projecting a chessboard, capturing it at various angles, and passing it into an OpenCV function that can calculate a distortion matrix which can be used to undistort the captured image frame.
+    \item The auto-cropping feature is very complicated to implement, so this task may be entirely postponed or skipped as it is unlikely we will be doing any more experiments in water due to the project's time constraints.
+\end{itemize}
+
+Success Metrics:
+
+\begin{itemize}
+    \item Code pushed to the Git repository.
+    \item Image cropping visually verified.
+    \item Image undistortion visually verified.
+\end{itemize}
+
+
+
+\subsubsection{Wednesday - Snake-based segmentation \& tracking (Milestone V2)}
+
+Actionable Items:
+
+\begin{itemize}
+    \item The V1 system uses Canny to detect edges, with the detected edges passed to OpenCV's findContours() method to extract closed-loop edges. The cancellation logic then uses a minimum enclosing circle (MEC) implementation which calculates a circumcircle that completely covers the minimum area of the detected contour. The MEC implementation must be replaced with the snake method.
+    \item The `least distance rule' and Kalman filter approach must be researched for the backscatter tracking implementation in the system.
+\end{itemize}
+
+Success Metrics:
+
+\begin{itemize}
+    \item Code pushed to the git repository.
+\end{itemize}
+
+
+\subsubsection{Friday - Complete the `Introduction' section of my report.}
+
+Actionable Items:
+
+\begin{itemize}
+    \item Hopefully by Monday, I will receive confirmation from Simon regarding the final report. Once I have received this, I will be able to start writing the report. I will aim to complete the `Introduction' section and maybe even make a start on the next section which covers the background information.
+\end{itemize}
+
+Success Metrics:
+
+\begin{itemize}
+    \item LaTeX code pushed to the git repository with a compiled PDF.
+\end{itemize}
